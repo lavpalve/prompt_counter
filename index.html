@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Prompt Box and Counter</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background-color: darkgray;
+            }
+            .container{
+                width: 80%;
+                height: 80vh;
+                margin: 50px auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                background-color: #f0f0f0;
+                border-radius: 20px;
+                text-align: center;
+            }
+            .promptBox{
+                width: 50%;
+                min-width: 500px;
+                height: 100%;
+                color: #0f0f0f;
+                margin: 20px auto;
+            }
+            .welcomeLine{
+                font-size: 24px;
+            }
+            .btn{
+                margin-top: 30px;
+                padding: 7px 14px;
+                border-radius: 20px;
+                border: none;
+                color: #f0f0f0;
+                background-color: rgb(153, 50, 13);
+            }
+            .btn:hover{
+                transform: scale(1.1);
+            }
+            .HelloLine{
+                display: none;
+            }
+            .HelloLineShow{
+                display: block;
+                margin-top: 15px;
+                font-size: 20px;
+            }
+            .counterBox{
+                width: 50%;
+                min-width: 500px;
+                height: 100%;
+                color: #f0f0f0;
+                background-color: #0f0c0a;
+            }
+            .titleLine{
+                margin-top: 20px;
+                font-size: 24px;
+            }
+            .counterBtnRow{
+                display: flex;
+                justify-content: space-evenly;
+            }
+            #counterValue{
+                margin-top: 30px;
+                font-size: 45px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="promptBox">
+                <span class="welcomeLine">Hey!...</span><br>
+                <div><button class="btn" onclick="requestUserName()">Click Here</button></div>
+                <div class="HelloLine" id="HelloLine">Hey&nbsp;<span id="opUsername" style="color: rgb(218, 3, 3);"></span>, How are you?</div>
+            </div>
+            <div class="counterBox">
+                <div class="titleLine">Counter</div>
+                <div class="counterBtnRow">
+                    <button class="btn" onclick="incByOne()">Increment by 1</button>
+                    <button class="btn" onclick="autoInc()">Increment by 10</button>
+                    <button class="btn" onclick="clearVal()">Clear</button>
+                </div>
+                <div id="counterValue">0</div>
+            </div>
+        </div>
+    </body>
+    <script>
+
+        function requestUserName(){
+            var userName = prompt("Please Enter your name", "Guest");
+            var userMsgElement = document.getElementById("opUsername");
+            document.getElementById("HelloLine").classList.add("HelloLineShow");
+            userMsgElement.innerText = userName;
+            
+        }
+
+        var counterValue = 0;
+        function incByOne(){
+            counterValue++;
+            document.getElementById("counterValue").innerHTML = counterValue;
+        }
+
+        function autoInc(){
+            counterValue+=10;
+            document.getElementById("counterValue").innerHTML = counterValue;
+        }
+
+        function clearVal(){
+            counterValue = 0;
+            document.getElementById("counterValue").innerHTML = counterValue;
+        }
+    </script>
+</html>
